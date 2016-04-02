@@ -1,8 +1,11 @@
+var webpack = require('webpack')
+
 module.exports = {
-    entry:  './src',
+    entry:  './src/',
     output: {
         path:     'builds',
         filename: 'bundle.js',
+        publicPath: 'builds/',
     },
     module: {
         loaders: [
