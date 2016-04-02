@@ -1,7 +1,7 @@
 var webpack = require('webpack')
 
 module.exports = {
-    entry:  './src/',
+    entry:  './src/index.jsx',
     output: {
         path:     'builds',
         filename: 'bundle.js',
@@ -11,12 +11,17 @@ module.exports = {
         loaders: [
           {
               test: /\.js/,
-              loader: 'babel-loader',
+              loader: 'babel',
               exclude: /node_modules/,
               query: {
                   presets: ['es2015']
               }
           },
+          {
+             //tell webpack to use jsx-loader for all *.jsx files
+             test: /\.jsx$/,
+             loader: 'jsx-loader?insertPragma=React.DOM&harmony'
+           },
           {
               test:   /\.scss/,
               loader: 'style!css!sass',
@@ -28,5 +33,13 @@ module.exports = {
               loader: 'html',
           }
         ],
+    },
+    externals: {
+        //don't bundle the 'react' npm package with our bundle.js
+        //but get it from a global 'React' variable
+        'react': 'React'
+    },
+    resolve: {
+      extensions: ['', '.js', '.jsx']
     }
 };
