@@ -1,4 +1,5 @@
 var webpack = require('webpack')
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
     entry:  './src/index.jsx',
@@ -24,8 +25,6 @@ module.exports = {
            },
           {
               test:   /\.scss/,
-              loader: 'style!css!sass',
-              // Or
               loaders: ['style', 'css', 'sass'],
           },
           {
@@ -41,5 +40,8 @@ module.exports = {
     },
     resolve: {
       extensions: ['', '.js', '.jsx']
-    }
+    },
+    plugins: [
+    new OpenBrowserPlugin({ url: 'http://localhost:8090/webpack-dev-server/index.html' })
+    ]
 };

@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack/webpack.config.js --display-modules",
     "start": "npm run serve | npm run dev",
-     "serve": "./node_modules/.bin/http-server -p 8080",
-     "dev": "webpack-dev-server --config webpack/webpack.config.js --progress --colors --port 8090"
+    "serve": "./node_modules/.bin/http-server -p 8080",
+    "dev": "webpack-dev-server --config webpack/webpack.config.js --progress --colors --inline --hot --port 8090"
   },
   "author": "Dariusz Paluch",
   "license": "ISC",
@@ -28,6 +28,7 @@
   "dependencies": {
     "babel-preset-react": "^6.5.0",
     "react": "^0.14.8",
-    "react-dom": "^0.14.8"
+    "react-dom": "^0.14.8",
+    "open-browser-webpack-plugin": "0.0.2"
   }
 }
